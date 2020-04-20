@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 
-import NavBar from './components/navBarComponent';
+import NavBar from './components/layout/navBarComponent';
 import CountersComponent from './components/countersComponent';
 
 class App extends Component {
 
   state = {
-    counters: [
-      {
+    counters: [{
         id: 1,
         value: 2,
       },
@@ -35,7 +36,7 @@ class App extends Component {
     // console.log(this.state);
 
   }
-// LifeCycle Hook Mount 3;
+  // LifeCycle Hook Mount 3;
   componentDidMount() {
     console.log(" App - Mounted")
   }
@@ -48,7 +49,9 @@ class App extends Component {
     );
     // this.setState({counters: counters});
     // If object Key and value are the same simplify this code like this
-    this.setState({ counters });
+    this.setState({
+      counters
+    });
   };
 
   resetCounter = () => {
@@ -56,7 +59,9 @@ class App extends Component {
       item.value = 0;
       return item;
     });
-    this.setState({ counters });
+    this.setState({
+      counters
+    });
   };
 
   incrementCounter = (counter) => {
@@ -67,26 +72,44 @@ class App extends Component {
 
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
-    counters[index] = { ...counter };
+    counters[index] = {
+      ...counter
+    };
     counters[index].value++;
-    this.setState({ counters });
+    this.setState({
+      counters
+    });
   };
-// LifeCycle Hook Mount 2;
+  // LifeCycle Hook Mount 2;
   render() {
     console.log(" App - Rendered ");
-    return ( 
-      <React.Fragment >
-        <NavBar totalCounters={this.state.counters.filter( item => item.value > 0).length}  />
-        <main role="main" className = "container">
-        <CountersComponent 
-        counters={this.state.counters}
-        onReset={this.resetCounter} 
-        onIncrement={this.incrementCounter} 
-        onDelete={this.deleteCounter}/>
-        </main> 
-        </React.Fragment>
-      )
-    }
+    return ( <
+      React.Fragment >
+      <
+      NavBar totalCounters = {
+        this.state.counters.filter(item => item.value > 0).length
+      }
+      /> <
+      main role = "main"
+      className = "container" >
+      <
+      CountersComponent counters = {
+        this.state.counters
+      }
+      onReset = {
+        this.resetCounter
+      }
+      onIncrement = {
+        this.incrementCounter
+      }
+      onDelete = {
+        this.deleteCounter
+      }
+      /> < /
+      main > <
+      /React.Fragment>
+    )
+  }
 }
 
 export default App;
