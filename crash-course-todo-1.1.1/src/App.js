@@ -17,11 +17,14 @@ import About from './components/pages/about/About';
 
 class App extends Component {
   render() {
-    return ( <Router >
+    return ( 
+    <Router >
       <div className = "container" >
-      <Header />
-      <Route exact path = '/'component = {Todos}/> 
-      <Route path = '/about'component = {About}/> </div > </Router>
+        <Header />
+        <Route exact path = '/'component = {Todos}/> 
+        <Route path = '/about'component = {About}/> 
+      </div> 
+    </Router>
     )
   }
 }
