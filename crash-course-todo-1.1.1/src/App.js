@@ -14,6 +14,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/layout/Header';
 import Todos from './components/pages/todo/Todos';
 import About from './components/pages/about/About';
+import SpecificTodo from './components/pages/axios-todos/SpecificTodo';
+import ToDoList from './components/pages/axios-todos/ToDoList';
 
 class App extends Component {
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
         <Header />
         <Route exact path = '/'component = {Todos}/> 
         <Route path = '/about'component = {About}/> 
+        <Route exact path='/todos' component={ToDoList} />
+        <Route exact path="/todos/:id" component={SpecificTodo} />
       </div> 
     </Router>
     )

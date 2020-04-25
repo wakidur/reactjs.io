@@ -4,12 +4,20 @@ import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
 
 export class Todos extends Component {
-  state = {
-    todos: [],
-  };
+  state = {};
+  constructor() {
+    super();
+    this.state = {
+      todos: [],
+      todoItems: [],
+      todoItem: {}
+    }
+  }
 
   // Lifecycle Hooks
   componentDidMount() {
+    // Axios /GET requests go here, when we want data ASAP!
+    // Using Axios with .then() .catch()
     axios
       .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
       .then((result) => {
@@ -49,25 +57,26 @@ export class Todos extends Component {
       });
   };
   // Add Todo
-  addTodo = (title) => {
-    console.log(title);
-    axios
-      .post('https://jsonplaceholder.typicode.com/todos', {
-        title,
-        completed: false,
-      })
-      .then((result) => {
-        console.log(result);
-        result.data.id = result.data.id += 1;
-        console.log(result.data);
-        this.setState({
-          todos: [...this.state.todos, result.data],
+   addTodo = (title) => {
+      console.log(title);
+      axios
+        .post('https://jsonplaceholder.typicode.com/todos', {
+          title,
+          completed: false,
+        })
+        .then((result) => {
+          console.log(result);
+          result.data.id = result.data.id += 1;
+          console.log(result.data);
+          this.setState({
+            todos: [...this.state.todos, result.data],
+          });
+        })
+        .catch((err) => {
+          console.error(err);
         });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+    };
+  
   render() {
     return (
       <div className="row">
@@ -79,10 +88,12 @@ export class Todos extends Component {
         </div>
         <div className="col-12">
           <ul className="list-group">
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            <p className=" mb-0 fr">Total Todo Item</p>
-            <span className="badge badge-primary badge-pill">{this.state.todos.length}</span>
-          </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <p className=" mb-0 fr">Total Todo Item</p>
+              <span className="badge badge-primary badge-pill">
+                {this.state.todos.length}
+              </span>
+            </li>
             {this.state.todos.map((item) => (
               <TodoItem
                 key={item.id}

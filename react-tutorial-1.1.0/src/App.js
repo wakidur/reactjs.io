@@ -83,31 +83,18 @@ class App extends Component {
   // LifeCycle Hook Mount 2;
   render() {
     console.log(" App - Rendered ");
-    return ( <
-      React.Fragment >
-      <
-      NavBar totalCounters = {
-        this.state.counters.filter(item => item.value > 0).length
-      }
-      /> <
-      main role = "main"
-      className = "container" >
-      <
-      CountersComponent counters = {
-        this.state.counters
-      }
-      onReset = {
-        this.resetCounter
-      }
-      onIncrement = {
-        this.incrementCounter
-      }
-      onDelete = {
-        this.deleteCounter
-      }
-      /> < /
-      main > <
-      /React.Fragment>
+    return ( 
+      <React.Fragment>
+        <NavBar totalCounters = { this.state.counters.filter(item => item.value > 0).length }/> 
+        <main role = "main"  className = "container" >
+          < CountersComponent 
+            counters = { this.state.counters }
+            onReset = { this.resetCounter }
+            onIncrement = { this.incrementCounter }
+            onDelete = { this.deleteCounter }
+          /> 
+        </main > 
+      </React.Fragment>
     )
   }
 }

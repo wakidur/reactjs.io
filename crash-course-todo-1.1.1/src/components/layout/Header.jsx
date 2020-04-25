@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
-      <a className="navbar-brand" href="#">
+      <span className="navbar-brand" href="#">
         Navbar
-      </a>
+      </span>
       <button
         className="navbar-toggler"
         type="button"
@@ -31,9 +31,9 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Pricing
-            </a>
+            <Link className="nav-link" to="/todos">
+              Todo
+            </Link>
           </li>
         </ul>
       </div>
