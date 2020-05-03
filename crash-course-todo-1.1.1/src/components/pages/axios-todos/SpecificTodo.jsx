@@ -24,7 +24,7 @@ export default class SpecificTodo extends Component {
   }
 
   render() {
-    const { id, title, userId, completed } = this.state.todoItem;
+    const { id, title, userId } = this.state.todoItem;
     return (
       <div>
         <p>{id}</p>

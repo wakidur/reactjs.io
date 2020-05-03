@@ -2,30 +2,51 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
+import Introducingjsx from '../main-concepts/Introducingjsx';
+import ComponentsAndProps from '../main-concepts/ComponentsAndProps';
+import StateAndLifecycle from '../main-concepts/StateAndLifecycle';
 
 export class Todos extends Component {
-  state = {};
-  constructor() {
-    super();
-    this.state = {
-      todos: [],
-      todoItems: [],
-      todoItem: {}
-    }
-  }
+  state = {
+    todos: [],
+    todoItems: [],
+    todoItem: {},
+    propsValue: [
+      {
+        name: 'Wakidur',
+      },
+      {
+        name: 'Rahman',
+      },
+    ],
+    date: new Date(),
+    text: 'I hope you enjoy learning React!',
+    author: {
+      name: 'Hello Kitty',
+      avatarUrl: 'https://placekitten.com/g/64/64',
+    },
+  };
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     todos: [],
+  //     todoItems: [],
+  //     todoItem: {},
+  //   };
+  // }
 
   // Lifecycle Hooks
   componentDidMount() {
     // Axios /GET requests go here, when we want data ASAP!
     // Using Axios with .then() .catch()
-    axios
-      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then((result) => {
-        this.setState({ todos: result.data });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // axios
+    //   .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    //   .then((result) => {
+    //     this.setState({ todos: result.data });
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
   }
 
   // Toggle Component
@@ -57,36 +78,51 @@ export class Todos extends Component {
       });
   };
   // Add Todo
-   addTodo = (title) => {
-      console.log(title);
-      axios
-        .post('https://jsonplaceholder.typicode.com/todos', {
-          title,
-          completed: false,
-        })
-        .then((result) => {
-          console.log(result);
-          result.data.id = result.data.id += 1;
-          console.log(result.data);
-          this.setState({
-            todos: [...this.state.todos, result.data],
-          });
-        })
-        .catch((err) => {
-          console.error(err);
+  addTodo = (title) => {
+    console.log(title);
+    axios
+      .post('https://jsonplaceholder.typicode.com/todos', {
+        title,
+        completed: false,
+      })
+      .then((result) => {
+        console.log(result);
+        result.data.id = result.data.id += 1;
+        console.log(result.data);
+        this.setState({
+          todos: [...this.state.todos, result.data],
         });
-    };
-  
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   render() {
     return (
       <div className="row">
         <div className="col-12">
+          <Introducingjsx />
+          <hr />
+          <ComponentsAndProps
+            name="Sara"
+            author={this.state.author}
+            text={this.state.text}
+            propsvalpass={this.state.propsValue}
+            date={this.state.date}
+          />
+          <hr/>
+          <StateAndLifecycle/>
+          <hr/>
+          
+        </div>
+        {/* <div className="col-12">
           <h1>Todo List</h1>
         </div>
         <div className="col-12">
           <AddTodo addTodo={this.addTodo} />
         </div>
-        <div className="col-12">
+        <div className="col-12"> 
           <ul className="list-group">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               <p className=" mb-0 fr">Total Todo Item</p>
@@ -103,7 +139,7 @@ export class Todos extends Component {
               />
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }
