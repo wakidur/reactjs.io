@@ -1,36 +1,75 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import TemperatureInput from './child/TemperatureInput';
 import BoilingVerdict from './child/BoilingVerdict';
 
 export default class Calculator extends Component {
-  // static propTypes = {
-  //     prop: PropTypes
-  // }
+  /**
+   * Local state
+   *
+   * This is the state we “lifted up” from the inputs, and it will serve as the “source of truth” for both of them.
+   */
+  state = { temperature: '', scale: 'c' };
 
-  state = {
-    temperature: '',
+  toCelsius = (fahrenheit) => {
+    return ((fahrenheit - 32) * 5) / 9;
   };
 
-  handleChange = (e) => {
-    this.setState({ temperature: e.target.value });
+  toFahrenheit = (celsius) => {
+    return (celsius * 9) / 5 + 32;
+  };
+
+  /**
+   * For example
+   * tryConvert('abc', toCelsius) returns an empty string,
+   * tryConvert('10.22', toFahrenheit) returns '50.396'
+   * @param {*} temperature
+   * @param {*} convert
+   */
+  tryConvert = (temperature, convert) => {
+    const input = parseFloat(temperature);
+    if (Number.isNaN(input)) return '';
+    const output = convert(input);
+    const rounded = Math.round(output * 1000) / 1000;
+    return rounded.toString();
+  };
+
+  handleCelsiusChange = (temperature) => {
+    this.setState({
+      scale: 'c',
+      temperature,
+    });
+  };
+
+  handleFahrenheitChange = (temperature) => {
+    console.log(temperature);
+    this.setState({
+      scale: 'f',
+      temperature
+    });
   };
 
   render() {
-    const { temperature } = this.state;
+    // object destructuring
+    const { scale, temperature } = this.state;
+    console.log(scale, temperature);
+    const celsius =
+      scale === 'f' ? this.tryConvert(temperature, this.toCelsius) : temperature;
+    const fahrenheit =
+      scale === 'c' ? this.tryConvert(temperature, this.toFahrenheit) : temperature;
     return (
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="temperature">Enter temperature in Celsius:</label>
-          <input
-            type="text"
-            id="temperature"
-            className="form-control"
-            value={temperature}
-            onChange={this.handleChange}
-          />
-        </div>
-        <BoilingVerdict celsius={parseFloat(temperature)} />
-      </fieldset>
+      <div>
+        <TemperatureInput
+          scale="c"
+          temperature={celsius}
+          onTemperatureChange={this.handleCelsiusChange}
+        />
+        <TemperatureInput
+          scale="f"
+          temperature={fahrenheit}
+          onTemperatureChange={this.handleFahrenheitChange}
+        />
+        <BoilingVerdict celsius={parseFloat(celsius)} />
+      </div>
     );
   }
 }
