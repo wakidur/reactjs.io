@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Clock from './Clock';
 import ClockClass from './ClockClass';
 import HandlingEvents from './HandlingEvents';
@@ -7,7 +6,6 @@ import LoginControl from './LoginControl';
 import Mailbox from './child/Mailbox';
 import WarningBanner from './child/WarningBanner';
 import Forms from './Forms';
-import Calculator from './Calculator';
 
 export default class StateAndLifecycle extends Component {
   state = {
@@ -27,13 +25,7 @@ export default class StateAndLifecycle extends Component {
     ],
   };
 
-  constructor(props) {
-    super(props);
-
-    // this.state = {
-    //   showWarning: true,
-    // };
-  }
+ 
 
   handleToggleClick = () => {
     this.setState((state) => ({ showWarning: !state.showWarning }));
@@ -62,10 +54,7 @@ export default class StateAndLifecycle extends Component {
     ));
     return (
       <div>
-        <h4>Temperature Calculator</h4>
-        <Calculator/>
         <hr/>
-        
         <h4>Form</h4>
         <Forms />
         <Clock date={new Date()} />

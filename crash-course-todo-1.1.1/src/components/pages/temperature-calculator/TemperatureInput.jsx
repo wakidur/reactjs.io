@@ -3,21 +3,15 @@ import PropTypes from 'prop-types';
 
 export default class TemperatureInput extends Component {
   static propTypes = {
-    scale: PropTypes.string,
-    onTemperatureChange: PropTypes.func,
-    temperature: PropTypes.string
-
+    onTemperatureChange: PropTypes.func.isRequired,
+    scale: PropTypes.string.isRequired,
+    temperature: PropTypes.string.isRequired,
   };
 
   
 
-  constructor(props) {
-    super(props);
-  }
-
   handleChange = (e) => {
-     // Before:  this.setState({ temperature: e.target.value });
-     this.props.onTemperatureChange(e.target.value);
+    this.props.onTemperatureChange(e.target.value);
   };
 
   render() {
@@ -25,10 +19,9 @@ export default class TemperatureInput extends Component {
       c: 'Celsius',
       f: 'Fahrenheit',
     };
-    // Before: const { temperature } = this.state;
+
+    // object destructuring
     const { temperature, scale } = this.props;
-    console.log(scale);
-    console.log(temperature);
     return (
       <fieldset>
         <div className="form-group">
@@ -39,7 +32,8 @@ export default class TemperatureInput extends Component {
             type="number"
             id="temperature"
             className="form-control"
-            placeholder="Temperature"
+            name="temperature"
+            placeholder={scaleNames[scale]}
             value={temperature}
             onChange={this.handleChange}
           />

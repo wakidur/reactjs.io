@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TemperatureInput from './child/TemperatureInput';
-import BoilingVerdict from './child/BoilingVerdict';
+import TemperatureInput from './TemperatureInput';
+import BoilingVerdict from './BoilingVerdict';
 
-export default class Calculator extends Component {
+export default class TemperatureCalculator extends Component {
   /**
    * Local state
    *
@@ -44,18 +44,22 @@ export default class Calculator extends Component {
     console.log(temperature);
     this.setState({
       scale: 'f',
-      temperature
+      temperature,
     });
   };
 
   render() {
     // object destructuring
     const { scale, temperature } = this.state;
-    console.log(scale, temperature);
+   
     const celsius =
-      scale === 'f' ? this.tryConvert(temperature, this.toCelsius) : temperature;
+      scale === 'f'
+        ? this.tryConvert(temperature, this.toCelsius)
+        : temperature;
     const fahrenheit =
-      scale === 'c' ? this.tryConvert(temperature, this.toFahrenheit) : temperature;
+      scale === 'c'
+        ? this.tryConvert(temperature, this.toFahrenheit)
+        : temperature;
     return (
       <div>
         <TemperatureInput

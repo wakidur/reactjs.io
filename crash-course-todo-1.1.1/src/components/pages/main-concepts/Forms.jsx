@@ -10,9 +10,7 @@ export default class Forms extends Component {
     isGoing: true,
     numberOfGuests: 2,
   };
-  constructor(props) {
-    super(props);
-  }
+  
 
   handleNameChange = (event) => {
     console.log(event.target.value);

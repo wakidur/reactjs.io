@@ -26,27 +26,19 @@ export class Todos extends Component {
       avatarUrl: 'https://placekitten.com/g/64/64',
     },
   };
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     todos: [],
-  //     todoItems: [],
-  //     todoItem: {},
-  //   };
-  // }
 
   // Lifecycle Hooks
   componentDidMount() {
     // Axios /GET requests go here, when we want data ASAP!
     // Using Axios with .then() .catch()
-    // axios
-    //   .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    //   .then((result) => {
-    //     this.setState({ todos: result.data });
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then((result) => {
+        this.setState({ todos: result.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   // Toggle Component
@@ -111,18 +103,17 @@ export class Todos extends Component {
             propsvalpass={this.state.propsValue}
             date={this.state.date}
           />
-          <hr/>
-          <StateAndLifecycle/>
-          <hr/>
-          
+          <hr />
+          <StateAndLifecycle />
+          <hr />
         </div>
-        {/* <div className="col-12">
+        <div className="col-12">
           <h1>Todo List</h1>
         </div>
         <div className="col-12">
           <AddTodo addTodo={this.addTodo} />
         </div>
-        <div className="col-12"> 
+        <div className="col-12">
           <ul className="list-group">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               <p className=" mb-0 fr">Total Todo Item</p>
@@ -139,7 +130,7 @@ export class Todos extends Component {
               />
             ))}
           </ul>
-        </div> */}
+        </div>
       </div>
     );
   }
