@@ -1,7 +1,13 @@
 # npm install -g create-react-app
 
+To ensure that npx always uses the latest version.
+# npm uninstall -g create-react-app
+
 # npx create-react-app my-app --template redux
+
+You can now create a new React application by typing
 # npx create-react-app my-app
+
 Inside that directory, you can run several commands:
 
 # npm start
@@ -11,3 +17,24 @@ Inside that directory, you can run several commands:
 # npm run eject
     Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
+
+
+/*********************** Using React in Visual Studio Code ******************************/
+create-react-app generator ( To use the generator as well as run the React application server)
+Configure the Chrome debugger
+launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
+
+npm install -g eslint
+Then install the ESLint extension by going to the Extensions view and typing 'eslint'.
