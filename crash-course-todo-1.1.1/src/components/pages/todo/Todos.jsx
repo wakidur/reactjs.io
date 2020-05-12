@@ -6,6 +6,11 @@ import Introducingjsx from '../main-concepts/Introducingjsx';
 import ComponentsAndProps from '../main-concepts/ComponentsAndProps';
 import StateAndLifecycle from '../main-concepts/StateAndLifecycle';
 
+
+import CustomTextInput from '../advanced-guides/accessibility/CustomTextInput';
+import OuterClickExample from '../advanced-guides/accessibility/OuterClickExample';
+
+
 export class Todos extends Component {
   state = {
     todos: [],
@@ -93,7 +98,14 @@ export class Todos extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-12">
+         <div className="col-12 ">
+           <h2>ADVANCED GUIDES</h2>
+           <CustomTextInput/>
+           <OuterClickExample/>
+           
+         </div>
+        <div className="col-12 pt-5">
+        <hr />
           <Introducingjsx />
           <hr />
           <ComponentsAndProps

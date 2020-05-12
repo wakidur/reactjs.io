@@ -8,7 +8,7 @@ export default class TemperatureCalculator extends Component {
    *
    * This is the state we “lifted up” from the inputs, and it will serve as the “source of truth” for both of them.
    */
-  
+
   state = { temperature: '', scale: 'c' };
 
   toCelsius = (fahrenheit) => {
@@ -56,7 +56,7 @@ export default class TemperatureCalculator extends Component {
       scale === 'f'
         ? this.tryConvert(temperature, this.toCelsius)
         : temperature;
-        
+
     const fahrenheit =
       scale === 'c'
         ? this.tryConvert(temperature, this.toFahrenheit)
