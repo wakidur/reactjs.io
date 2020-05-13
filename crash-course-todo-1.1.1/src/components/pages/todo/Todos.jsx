@@ -9,6 +9,8 @@ import StateAndLifecycle from '../main-concepts/StateAndLifecycle';
 
 import CustomTextInput from '../advanced-guides/accessibility/CustomTextInput';
 import OuterClickExample from '../advanced-guides/accessibility/OuterClickExample';
+import AppB from '../learn-advanced-react/react-pass-props-to-component/AppB';
+import AppC from '../learn-advanced-react/react-pass-props-to-component/AppC';
 
 
 export class Todos extends Component {
@@ -98,6 +100,18 @@ export class Todos extends Component {
   render() {
     return (
       <div className="row">
+        <div className="col-12 mb-5">
+           <h2>Props</h2>
+           <AppC/>
+          
+           
+         </div>
+        <div className="col-12 mb-5">
+           <h2>Props</h2>
+           <AppB/>
+          
+           
+         </div>
          <div className="col-12 ">
            <h2>ADVANCED GUIDES</h2>
            <CustomTextInput/>
