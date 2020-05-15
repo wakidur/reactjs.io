@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import Header from './components/layout/Header';
+const CurrencyConverter = lazy(() => import('./components/pages/react-render-props/CurrencyConverter')); 
 const Todos = lazy(() => import('./components/pages/todo/Todos'));
 const About = lazy(() => import('./components/pages/about/About'));
 const SpecificTodo = lazy(() => import('./components/pages/axios-todos/SpecificTodo'));
@@ -29,7 +30,8 @@ class App extends Component {
               <Route path = '/temperature'component = {TemperatureCalculator}/> 
               <Route exact path='/todos' component={ToDoList} />
               <Route exact path="/todos/:id" component={SpecificTodo} />
-              <Route path = '/about'component = {About}/> 
+              <Route path = '/about' component = {About}/> 
+              <Route path = '/render-props' component = {CurrencyConverter}/> 
             </Switch>
           </Suspense> 
         </Router>

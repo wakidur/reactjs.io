@@ -41,6 +41,11 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to="/render-props">
+            Render Props
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="/about">
               About
             </Link>
