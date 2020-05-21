@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import Header from './components/layout/Header';
+
+const FetchAPI = lazy(() => import('./components/pages/react-fetching-data/FetchAPI'));
 const CurrencyConverter = lazy(() => import('./components/pages/react-render-props/CurrencyConverter')); 
 const Todos = lazy(() => import('./components/pages/todo/Todos'));
 const About = lazy(() => import('./components/pages/about/About'));
@@ -32,6 +34,7 @@ class App extends Component {
               <Route exact path="/todos/:id" component={SpecificTodo} />
               <Route path = '/about' component = {About}/> 
               <Route path = '/render-props' component = {CurrencyConverter}/> 
+              <Route path = '/fetch-data' component = {FetchAPI}/> 
             </Switch>
           </Suspense> 
         </Router>
