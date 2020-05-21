@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class ClockClass extends Component {
   state = {};
-  timerID ;
+  timerID;
   constructor(props) {
     super(props);
 
@@ -11,19 +11,18 @@ export default class ClockClass extends Component {
     };
   }
 
-  tick() {
-      
-      this.setState({
-          date: new Date(),
-      })
-  }
+  tick = () => {
+    this.setState({
+      date: new Date(),
+    });
+  };
   componentDidMount() {
     /**
      * Called immediately after a component is mounted. Setting state here will trigger re-rendering.
-     * The componentDidMount() method runs after the component output has been rendered to the DOM. 
+     * The componentDidMount() method runs after the component output has been rendered to the DOM.
      */
     this.timerID = setInterval(() => {
-       this.tick() 
+      this.tick();
     }, 1000);
   }
 
@@ -38,7 +37,7 @@ export default class ClockClass extends Component {
     return (
       <div>
         <h1>Hello, world!</h1>
-        <h2>It is  {this.state.date.toLocaleTimeString()}.</h2>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
