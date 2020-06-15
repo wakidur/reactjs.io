@@ -11,18 +11,15 @@ export class App extends Component {
   state = {
     images: [],
   };
+  
   static propTypes = {};
 
   onSearchSubmit = async (term) => {
-    console.log(term);
     const response = await unsplash.get("/search/photos", {
       params: { query: term },
     });
 
-    console.log(response);
-
     this.setState({images: response.data.results});
-    console.log(this.state.images);
   };
 
   render() {
@@ -30,8 +27,9 @@ export class App extends Component {
       <Container>
         <Row>
           <Col>
-            {/* onSubmit props */}
+            {/* onSubmitSearchValue props type func*/}
             <SearchBar onSubmitSearchValue={this.onSearchSubmit} />
+            {/* images props type array*/}
             <ImageList images={this.state.images} />
           </Col>
         </Row>
