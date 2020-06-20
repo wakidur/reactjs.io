@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Using ES6 modules
+import React, { Component, Suspense, lazy } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
+
+import StreamCreate from "./streams/StreamCreate";
+import StreamEdit from "./streams/StreamEdit";
+import StreamDelete from "./streams/StreamDelete";
+import StreamList from "./streams/StreamList";
+import StreamShow from "./streams/StreamShow";
+import Header from "./layout/Header";
+import history from "../utility/history";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router>
+        <React.Fragment>
+          <Header />
+          {/* A <Switch> looks through its children <Route>s and
+        renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/" exact component={StreamList} />
+            <Route path="/streams/new" exact component={StreamCreate} />
+            <Route path="/streams/edit/:id" exact component={StreamEdit} />
+            <Route path="/streams/delete/:id" exact component={StreamDelete} />
+            <Route path="/streams/:id" exact component={StreamShow} />
+          </Switch>
+        </React.Fragment>
+      </Router>
+    </Container>
   );
 }
 
