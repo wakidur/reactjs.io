@@ -3,18 +3,19 @@ import React, { Component, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
+import history from "../utility/history";
+import Header from "./layout/Header";
+
 import StreamCreate from "./streams/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
 import StreamList from "./streams/StreamList";
 import StreamShow from "./streams/StreamShow";
-import Header from "./layout/Header";
-import history from "../utility/history";
 
 function App() {
   return (
     <Container>
-      <Router>
+      <Router history={history}>
         <React.Fragment>
           <Header />
           {/* A <Switch> looks through its children <Route>s and
