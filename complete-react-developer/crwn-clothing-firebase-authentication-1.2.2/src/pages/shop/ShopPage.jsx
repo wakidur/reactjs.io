@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import SHOP_DATA from "./shop.data";
 import CollectionPreview from "../../components/collection-preview/CollectionPreview";
 
-export default class Shop extends Component {
+export default class ShopPage extends Component {
   constructor(props) {
     super(props);
 

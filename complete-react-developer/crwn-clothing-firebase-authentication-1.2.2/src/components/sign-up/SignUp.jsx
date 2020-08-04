@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import FormInput from "../form-input/FormInput";
 import CustomButton from "../custom-button/CustomButton";
 
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+
 import "./SignUp.scss";
 
 export default class SignUp extends Component {
@@ -17,10 +19,33 @@ export default class SignUp extends Component {
     };
   }
 
-  signUpSubmit = async event => {
-    event.preventDefault()
-    const {displayName, email, password, confirmPassword} = this.state;
-  }
+  signUpSubmit = async (event) => {
+    event.preventDefault();
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -68,9 +93,7 @@ export default class SignUp extends Component {
             label="Confirm Password"
             required
           />
-          <CustomButton type='submit' >
-            SIGN UP
-          </CustomButton>
+          <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
       </div>
     );
