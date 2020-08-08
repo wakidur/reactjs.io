@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
+// Import service
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+
+//Import service
 import FormInput from "../form-input/FormInput";
 import CustomButton from "../custom-button/CustomButton";
 
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-
+// Import style
 import "./SignUp.scss";
 
 export default class SignUp extends Component {

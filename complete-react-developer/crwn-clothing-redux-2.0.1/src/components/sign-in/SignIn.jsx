@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
+// Import service
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
+
+// Import component
 import FormInput from "../form-input/FormInput";
 import CustomButton from "../custom-button/CustomButton";
 
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
-
+// import style
 import "./SignIn.scss";
 
 export default class SignIn extends Component {
@@ -17,9 +20,9 @@ export default class SignIn extends Component {
     };
   }
 
-  handleSubmit = ( event ) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-
+    const { email, password } = this.state;
     try {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({
@@ -29,12 +32,11 @@ export default class SignIn extends Component {
     } catch (error) {
       console.error(error);
     }
-    
-  }
+  };
 
   // Handle Change
 
-  handleChange = ( event ) => {
+  handleChange = (event) => {
     const { value, name } = event.target;
 
     this.setState({
