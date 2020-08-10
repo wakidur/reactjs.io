@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,7 +7,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 
 // Page import
 import Header from "./components/header/Header";
@@ -41,7 +41,6 @@ class App extends Component {
           console.log(this.state);
         });
       }
-      console.log(this.props.currentUser);
       setCurrentUser({ currentUser: userAuth });
     });
   }
@@ -51,8 +50,8 @@ class App extends Component {
   }
 
   render() {
-    const isCurrentUserNotNull = this.props.currentUser === null ? true : false;
-    console.log(isCurrentUserNotNull)
+    const { user } = this.props;
+    console.log(user);
     return (
       <React.Fragment>
         <Header />
@@ -64,11 +63,7 @@ class App extends Component {
             exact
             path="/signin"
             render={() =>
-              isCurrentUserNotNull ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
+              user.currentUser ? (<Redirect to="/" />) : (<SignInAndSignUpPage />)
             }
           />
         </Switch>
@@ -77,8 +72,14 @@ class App extends Component {
   }
 }
 
+
+
+App.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
 const mapStateToProps = (state) => ({
-  currentUser: state.user,
+  user: state.user,
 });
 
 const mapDispatchToProps = {
@@ -86,3 +87,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+

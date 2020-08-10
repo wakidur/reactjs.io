@@ -1,20 +1,18 @@
-import { SET_CURRENT_USER } from './user.types';
+import { SET_CURRENT_USER } from "./user.types";
 
 const INITIAL_STATE = {
   currentUser: null,
 };
 
-const userReducer = (state = INITIAL_STATE, {type, payload}) => {
-  console.log('userReducer', type)
+export default (state = INITIAL_STATE, { type, payload }) => {
+  console.log(state);
   switch (type) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        currentUser: payload,
+        ...payload,
       };
     default:
       return state;
   }
 };
-
-export default userReducer;

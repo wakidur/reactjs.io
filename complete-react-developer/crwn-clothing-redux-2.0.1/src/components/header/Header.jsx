@@ -14,9 +14,9 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./Header.scss";
 
 const Header = ({ currentUser, hidden }) => {
-  console.table(currentUser, hidden);
+  console.table(currentUser.currentUser, hidden);
   const hello = {id: 1}
-  const isCurrentUserNotNull =  (typeof currentUser === 'object') ? true : false;
+  const isCurrentUserNotNull =  (typeof currentUser === 'object') && currentUser === null ? true : false;
   console.log(isCurrentUserNotNull);
   return (
     <div className="header">
@@ -30,7 +30,7 @@ const Header = ({ currentUser, hidden }) => {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
-        {isCurrentUserNotNull ? (
+        {currentUser.currentUser  ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
