@@ -1,0 +1,137 @@
+// Helper Class
+.text-underline {
+  text-decoration: underline !important;
+  &:hover {
+    text-decoration: underline !important;;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: underline;
+  }
+
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.lu-account-seccess {
+    color: #6cd8a6 !important;
+}
+.lu-text-picton-blue {
+    color: #2392ec !important;
+}
+
+.lu-mt-20 {
+  margin-top: 20px !important;
+}
+.lu-pt-20 {
+  padding-top: 20px !important;
+}
+
+.lu-font-size-10 {
+  font-size: 10px;
+}
+.lu-font-size-11 {
+  font-size: 11px;
+}
+.lu-font-size-12 {
+  font-size: 12px;
+}
+.lu-font-size-13 {
+  font-size: 13px;
+}
+.lu-font-size-14 {
+  font-size: 14px;
+}
+.lu-font-size-15 {
+  font-size: 15px;
+}
+.lu-font-size-16 {
+  font-size: 16px;
+}
+.lu-font-size-17 {
+  font-size: 17px;
+}
+
+// height 
+.lu-h-20 {
+  height: 20px;
+
+}
+.lu-h-21 {
+  height: 21px;
+
+}
+
+// line-height
+.lu-lh-19 {
+  line-height: 19px;
+}
+
+.lu-lh-20 {
+  line-height: 20px;
+}
+
+.lu-lh-21 {
+  line-height: 21px;
+}
+
+
+// Extra small devices (portrait phones, less than 376px)
+@media (max-width: 375.98px) { 
+    
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { 
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {  
+
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {  }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {  
+
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { 
+
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) and (max-width: 1365.98px) { 
+
+}
+
+// Extra devices (desktops, less than 1366px)
+@media (max-width: 1365.98px) { 
+
+ }
+
+// Extra large devices (large desktops, 1366px and up)
+@media (min-width: 1366px) and (max-width: 1439.98px) { 
+
+ }
+
+// Large devices (desktops, less than 1400px)
+@media (max-width: 1400px) { 
+
+}
+

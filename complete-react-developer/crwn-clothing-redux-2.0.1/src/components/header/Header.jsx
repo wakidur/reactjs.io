@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -14,30 +14,27 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./Header.scss";
 
 const Header = ({ currentUser, hidden }) => {
-  console.table(currentUser.currentUser, hidden);
-  const hello = {id: 1}
-  const isCurrentUserNotNull =  (typeof currentUser === 'object') && currentUser === null ? true : false;
-  console.log(isCurrentUserNotNull);
+  console.table(currentUser, hidden);
   return (
     <div className="header">
-      <Link className="logo-container" to="/">
+      <NavLink activeClassName="active" className="logo-container" to="/">
         <Logo className="logo" />
-      </Link>
+      </NavLink>
       <div className="options">
-        <Link className="option" to="/shop">
+        <NavLink className="option" to="/shop">
           SHOP
-        </Link>
-        <Link className="option" to="/shop">
+        </NavLink>
+        <NavLink className="option" to="/shop">
           CONTACT
-        </Link>
-        {currentUser.currentUser  ? (
+        </NavLink>
+        {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
         ) : (
-          <Link className="option" to="/signin">
+          <NavLink className="option" to="/signin">
             SIGN IN
-          </Link>
+          </NavLink>
         )}
         <CartIcon />
       </div>
@@ -47,7 +44,7 @@ const Header = ({ currentUser, hidden }) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user,
+  currentUser: state.user.currentUser,
   hidden: state.cart.hidden,
 });
 

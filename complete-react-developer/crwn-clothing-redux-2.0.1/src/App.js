@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,20 +28,24 @@ class App extends Component {
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        console.log(this.props.currentUser);
-        userRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data(),
-            },
+      try {
+        if (userAuth) {
+          const userRef = await createUserProfileDocument(userAuth);
+          console.log(this.props.currentUser);
+          userRef.onSnapshot((snapShot) => {
+            setCurrentUser({
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data(),
+              },
+            });
+            console.log(this.state);
           });
-          console.log(this.state);
-        });
+        }
+        setCurrentUser({ currentUser: userAuth });
+      } catch (error) {
+        console.log(error);
       }
-      setCurrentUser({ currentUser: userAuth });
     });
   }
 
@@ -63,7 +67,7 @@ class App extends Component {
             exact
             path="/signin"
             render={() =>
-              user.currentUser ? (<Redirect to="/" />) : (<SignInAndSignUpPage />)
+              user ? <Redirect to="/" /> : <SignInAndSignUpPage />
             }
           />
         </Switch>
@@ -72,14 +76,12 @@ class App extends Component {
   }
 }
 
-
-
 App.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.currentUser,
 });
 
 const mapDispatchToProps = {
@@ -87,4 +89,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

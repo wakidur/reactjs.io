@@ -25,3 +25,6 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@import "./utilities/variables";
+@import "./utilities/mixins";
