@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import CheckoutItem from "../../components/checkout-item/CheckoutItem";
+import CheckoutItem from '../../components/checkout-item/CheckoutItem';
+import { selectCartTotal } from '../../redux/cart/cart.utils';
 
-
-
-import "./CheckoutPage.scss";
+import './CheckoutPage.scss';
 
 const CheckoutPage = ({ cartItems, total }) => (
   <div className="checkout-page">
@@ -33,15 +32,9 @@ const CheckoutPage = ({ cartItems, total }) => (
   </div>
 );
 
-
-
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
-  total: state.cart.cartItems.reduce(
-    (accumalatedQuantity, cartItem) =>
-      accumalatedQuantity + cartItem.quantity * cartItem.price,
-    0
-  ),
+  total: selectCartTotal(state.cart.cartItems),
 });
 
 const mapDispatchToProps = {};

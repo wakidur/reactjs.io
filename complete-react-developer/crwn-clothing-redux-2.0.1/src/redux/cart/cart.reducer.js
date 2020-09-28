@@ -3,13 +3,15 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
-} from "./cart.types";
+  SELECT_CART_ITEMS_COUNT,
+} from './cart.types';
 
 import {
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
-} from "./cart.utils";
+  selectCartItemsCount,
+} from './cart.utils';
 
 const initialState = {
   hidden: true,
@@ -32,10 +34,13 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         cartItems: clearItemFromCart(state.cartItems, payload),
       };
+    case SELECT_CART_ITEMS_COUNT:
+      return {
+        ...state,
+        itemCount: selectCartItemsCount(state.cartItems, payload),
+      };
 
     default:
       return state;
   }
 };
-
-

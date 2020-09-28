@@ -1,17 +1,15 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import { auth } from "../../firebase/firebase.utils";
-import CartIcon from "../cart-icon/CartIcon";
-import CartDropdown from "../cart-dropdown/CartDropdown";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { auth } from '../../firebase/firebase.utils';
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
-import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as Logo } from '../../assets/images/crown.svg';
 
-import "./Header.scss";
+import './Header.scss';
 
 const Header = ({ currentUser, hidden }) => {
   console.table(currentUser, hidden);

@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import CustomButton from "../custom-button/CustomButton";
-import { addItem } from "../../redux/cart/cart.actions";
+import CustomButton from '../custom-button/CustomButton';
+import { addItem } from '../../redux/cart/cart.actions';
 
-import "./CollectionItem.scss";
+import './CollectionItem.scss';
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
@@ -28,12 +28,10 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {
-  addItem 
-}
+  addItem,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionItem);
-
-
