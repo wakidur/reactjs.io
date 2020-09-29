@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/CartIcon';
@@ -12,7 +11,6 @@ import { ReactComponent as Logo } from '../../assets/images/crown.svg';
 import './Header.scss';
 
 const Header = ({ currentUser, hidden }) => {
-  console.table(currentUser, hidden);
   return (
     <div className="header">
       <NavLink activeClassName="active" className="logo-container" to="/">

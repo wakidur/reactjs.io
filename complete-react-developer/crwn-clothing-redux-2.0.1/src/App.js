@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Page import
@@ -55,7 +50,6 @@ class App extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(user);
     return (
       <React.Fragment>
         <Header />
