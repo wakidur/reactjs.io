@@ -1,25 +1,21 @@
-import React, { Component } from "react";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import SHOP_DATA from "./shop.data";
-import CollectionPreview from "../../components/collection-preview/CollectionPreview";
+import CollectionPreview from '../../components/collection-preview/CollectionPreview';
 
-export default class ShopPage extends Component {
-  constructor(props) {
-    super(props);
+const ShopPage = (collections) => (
+  <div className="shop-page">
+    {collections &&
+      collections.map(({ id, ...otherCollection }) => (
+        <CollectionPreview key={id} {...otherCollection} />
+      ))}
+  </div>
+);
 
-    this.state = {
-      collections: SHOP_DATA,
-    };
-  }
+const mapStateToProps = (state) => ({
+  collections: state.info.collections,
+});
 
-  render() {
-    const { collections } = this.state;
-    return (
-      <div className="shop-page">
-        {collections.map(({ id, ...otherCollection }) => (
-          <CollectionPreview key={id} {...otherCollection} />
-        ))}
-      </div>
-    );
-  }
-}
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);

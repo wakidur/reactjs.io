@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MenuItem from '../menu-item/MenuItem';
 import './Directory.style.scss';
 
-export const Directory = ({ sections }) => (
+const Directory = ({ sections }) => (
   <div className="directory-menu">
     {sections &&
       sections.map(({ id, ...otherProps }, index) => (
