@@ -9,7 +9,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case SET_CURRENT_USER:
       return {
         ...state,
-        ...payload,
+        currentUser: payload,
       };
     default:
       return state;

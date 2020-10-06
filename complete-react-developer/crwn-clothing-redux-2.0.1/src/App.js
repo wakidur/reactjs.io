@@ -9,8 +9,13 @@ import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/ShopPage';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/SignInAndSignUpPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';
+import { selectCollectionsForPreview } from './redux/shop/shop.utils';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments,
+} from './firebase/firebase.utils';
 
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -20,24 +25,25 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       try {
         if (userAuth) {
           const userRef = await createUserProfileDocument(userAuth);
-          console.log(this.props.currentUser);
           userRef.onSnapshot((snapShot) => {
             setCurrentUser({
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data(),
-              },
+              id: snapShot.id,
+              ...snapShot.data(),
             });
-            console.log(this.state);
           });
         }
-        setCurrentUser({ currentUser: userAuth });
+        setCurrentUser(userAuth);
+        // this function resposible for add data to firestore
+        // addCollectionAndDocuments(
+        //   'collections',
+        //   collectionsArray.map(({ title, items }) => ({ title, items }))
+        // );
       } catch (error) {
         console.log(error);
       }
@@ -76,6 +82,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user.currentUser,
+  collectionsArray: selectCollectionsForPreview(state.info.collections),
 });
 
 const mapDispatchToProps = {
