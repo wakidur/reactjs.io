@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import UsingTheEffectHook from './components/UsingTheEffectHook';
+import UseEffectsOne from './components/UseEffectsOne';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,8 @@ function App() {
   return (
     <div>
       <UsingTheEffectHook />
+      <hr />
+      <UseEffectsOne />
     </div>
   );
 }
