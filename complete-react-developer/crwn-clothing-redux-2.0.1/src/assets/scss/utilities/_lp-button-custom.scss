@@ -1,0 +1,72 @@
+.lp-btn-outline-secondary,
+.lp-btn-outline-primary {
+  text-transform: none;
+  font-size: 16px;
+  font-weight: $weight-400;
+  font-stretch: $normal;
+  font-style: $normal;
+  line-height: 21px;
+  letter-spacing: $normal;
+ 
+  @include luCommon-boderRadius(30px, 30px, 30px, 30px);
+  margin: 0px;
+}
+
+.lp-btn-outline-primary {
+  color: $primaryColor !important;
+  box-shadow: 0 5px 10px 0 rgba(33, 38, 59, 0.2);
+  border: solid 1.5px $primaryColor !important;
+  background-color: $pureWhite !important;
+  -webkit-transition: all 500ms;
+  -ms-transition: all 500ms;
+  -moz-transition: all 500ms;
+  transition: all 500ms;
+  &:hover {
+    color: $pureWhite !important;
+    border: solid 1.5px $primaryColor !important;
+    background-color: $primaryColor !important;
+  }
+}
+
+.lp-btn-outline-secondary {
+  color: $ashColoold !important;
+  border: solid 2px $ashColoold !important;
+  background-color: rgba(43, 87, 100, 0) !important;
+  box-shadow: none;
+  &:hover {
+    color: $primaryColor !important;
+    border: solid 2px $offWhite !important;
+    background-color: $offWhite !important;
+  }
+}
+
+.lp-btn-bg-primary {
+  @include luCommon-fontStyles( 16px, $normal, $normal, $normal, 20px, $normal, $ashColoold);
+  @include luCommon-boder(0px, 0px, 0px, 0px, none, transparent);
+  background-color: #f5f5f5;
+  &:hover {
+    @include luCommon-boder(0px, 0px, 0px, 0px, none, transparent);
+    background-color: #21263b;
+    color: $pureWhite;
+  }
+}
+
+.lu-btn-disable-active {
+  @include luCommon-fontStyles(16px, $weight-500, $normal, $normal, 20px, $normal, $pureWhite);
+  @include luCommon-boder(0px, 0px, 0px, 0px, none, transparent);
+  @include luCommon-boderRadius(30px, 30px, 30px, 30px);
+  @include luCommon-bg-color($primaryColor);
+  @include luCommon-transitionAllSecond(all, 500ms, linear, 500ms);
+  
+  &:hover {
+    @include luCommon-boder(0px, 0px, 0px, 0px, none, transparent);
+    @include luCommon-text-color($pureWhite);
+    @include luCommon-bg-color($primaryColor);
+  }
+  &:disabled {
+    @include luCommon-text-color($ashColoold);
+    @include luCommon-bg-color($WildSand);
+    @include luCommon-boder(0px, 0px, 0px, 0px, none, transparent);
+  }
+  
+}

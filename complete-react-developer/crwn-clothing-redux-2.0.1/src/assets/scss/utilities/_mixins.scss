@@ -1,0 +1,149 @@
+// project dependencies
+@mixin luCommon-fontStyles(
+  $fontSize,
+  $fontWeight,
+  $fontStretch,
+  $fontStyle,
+  $lineHeight,
+  $letterSpacing,
+  $color
+) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-stretch: $fontStretch;
+  font-style: $fontStyle;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+  color: $color;
+}
+@mixin luCommon-fontstyles-withoutColor(
+  $fontSize,
+  $fontWeight,
+  $fontStretch,
+  $fontStyle,
+  $lineHeight,
+  $letterSpacing
+) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-stretch: $fontStretch;
+  font-style: $fontStyle;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin luCommon-padding($top, $right, $bottom, $left) {
+  padding-top: $top !important;
+  padding-right: $right !important;
+  padding-bottom: $bottom !important;
+  padding-left: $left !important;
+}
+
+@mixin luCommon-margin($top, $right, $bottom, $left) {
+  margin-top: $top !important;
+  margin-right: $right !important;
+  margin-bottom: $bottom !important;
+  margin-left: $left !important;
+}
+@mixin luCommon-boder($top, $right, $bottom, $left, $style, $color) {
+  border-top-width: $top !important;
+  border-right-width: $right !important;
+  border-bottom-width: $bottom !important;
+  border-left-width: $left !important;
+  border-style: $style !important;
+  border-color: $color !important;
+}
+@mixin luCommon-boderRadius(
+  $top-left,
+  $top-right,
+  $bottom-right,
+  $bottom-left
+) {
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+  border-top-left-radius: $top-left;
+  border-top-right-radius: $top-right;
+  border-bottom-right-radius: $bottom-right;
+  border-bottom-left-radius: $bottom-left;
+}
+
+@mixin luCommon-transitionAllSecond(
+  $property,
+  $duration,
+  $timingFunction,
+  $delay
+) {
+  /* Specifies the name of the CSS property the transition effect is for */
+  /* Specifies how many seconds or milliseconds the transition effect takes to complete */
+  /* Specifies the speed curve of the transition effect. */
+  /* The transition-delay property specifies when the transition effect will start. */
+  -webkit-transition: $property $duration $timingFunction $delay;
+  -moz-transition: $property $duration $timingFunction $delay;
+  -ms-transition: $property $duration $timingFunction $delay;
+  -o-transition: $property $duration $timingFunction $delay;
+  transition: $property $duration $timingFunction $delay;
+}
+
+// font-size
+@mixin luCommon-font-size($size) {
+  font-size: $size !important;
+}
+// text-color
+@mixin luCommon-text-color($color) {
+  color: $color !important;
+}
+// text-align
+@mixin luCommon-text-align($align) {
+  text-align: $align !important;
+}
+// background-color
+@mixin luCommon-bg-color($bgColor) {
+  background-color: $bgColor !important;
+  background: $bgColor !important;
+}
+// height-width
+@mixin luCommon-height-width($height, $width) {
+  max-height: $height; //The max-height property defines the maximum height of an element.
+  min-height: $height; //The min-height property defines the minimum height of an element
+  height: $height;
+
+  max-width: $width; //The max-width property defines the maximum width of an element.
+  min-width: $width; //The min-width property defines the minimum width of an element
+  width: $width;
+}
+
+@mixin common-lu-input-WithBG {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #f1f2f5;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: 0;
+  &.input-filled {
+      border: solid 1px $primaryColor;
+      background-color: #ffffff;
+  }
+  &:focus {
+      border: solid 2px $pinkPrimary !important;
+      background-color: #ffffff;
+      box-shadow: none !important;
+  }
+  &:focus + label {
+      color: $pinkPrimary !important;
+  }
+  &.is-invalid {
+      border: solid 2px #ed4c4c !important;
+      background-color: #ffffff;
+      background: none;
+      &:focus + label {
+          color: #ed4c4c !important;
+      }
+  }
+}
