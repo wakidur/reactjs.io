@@ -103,4 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
+#Typescript: The Complete Developer's Guide
+typescript-the-complete-developers-guide/typescriptcasts/
+
 
