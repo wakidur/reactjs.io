@@ -7,11 +7,14 @@ export default class Introducingjsx extends Component {
   };
   name = 'Josh Perez';
   element = (<h1>Hello, {this.name}!</h1>);
+  
   user = {
     firstName: 'Harper',
     lastName: 'Perez',
   };
   userEpt = {};
+
+  // setp 1 
 
   formatName = (user) => {
     return `${user.firstName} ${user.lastName}`;
